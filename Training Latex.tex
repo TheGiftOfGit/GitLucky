@@ -1,0 +1,232 @@
+\documentclass[a4paper, 10pt]{article}
+
+%%Packages
+\usepackage[utf8]{inputenc} %Usage des caractères speciaux
+\usepackage[T1]{fontenc} %
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage[french]{babel}
+\usepackage{amsmath,amsfonts}
+\usepackage{graphicx}
+\usepackage{blindtext}
+	\blindmathtrue
+\usepackage{geometry}
+	\geometry
+	{top    =2cm,
+	bottom  =2.5cm,
+	left    =2cm,
+	right   =2cm}
+\usepackage{multicol}
+ %Intérêt de mettre une marge asymétrique lors de l'impression de fichiers
+\usepackage{hyperref} % crée des liens hypertexte pour tout ce qui peut servir
+\usepackage{fancyhdr} % cree un layout de page styley
+	\pagestyle{fancy}
+	\fancyhead[LE,RO]{Formation \LaTeX}
+	%\fancyhead[RE,LO]{\thesection}
+	\fancyfoot[CE,CO]{\leftmark}
+	\fancyfoot[LE,RO]{\thepage}
+
+
+
+%% Page de garde
+\title{\LaTeX  Training}
+\author{Leo}
+
+
+
+
+
+%% Début du code
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\begin{multicols}{2}
+
+\section{1stPart}
+but does it work?
+
+\subsection{1.1}
+éçà\& % le caractere & est un caractere de compilation
+\subsubsection{1.1.1}
+
+
+Ceci est un paragraphe long. 
+Si je reviens à la  ligne seulement une fois Latex compile tout comme étant un seul paragraphe
+
+En revanche si je laisse une ligne blanche entre mes deux paragraphe LateX lance un second paragraphe
+\newline
+
+La commande newline crée un espace à la suite du paragraphe précédent
+
+\begin{itemize}
+\item 1
+\newline
+\item 2 
+\end{itemize}
+
+
+\begin{enumerate}
+\item ahaha
+\item ahaha
+\end{enumerate}
+
+
+\section{les mathematiques avec \LaTeX}
+
+Il existe deux grands types d'environnements de maths :
+\begin{itemize}
+\item 1
+des maths en ligne:  il faut utilise le symbole dollar
+exemple la fonction $f(\alpha) \geq 5$
+\item 2
+Des maths en standalone
+$$
+f(\alpha)=\zeta_i^j
+$$
+$$
+{\alpha \beta }^6
+$$
+$$
+\sum_{i=0}^\infty \zeta_{ik}^5
+\mbox{hahahaha} % Permet d'écrire du texte dans les équations
+$$
+
+% brackets pour faire des anotations sous des termes
+$$
+f(\alpha)=\underbrace{A}_{term1} +\underbrace{B}_{term2}
+$$
+
+%fractions
+$$
+\frac{3}{2} \times \frac{16}{156} 
+$$
+
+% label equations
+\begin{equation}
+\upsilon=22
+\label{eq:fractions}
+\end{equation}
+$\Upsilon$
+% des caligraphies special math
+$$
+\mathcal R % typiquement pour les repères en math, ou les espaces
+%\mathbb R
+$$
+
+%matrices
+\begin{equation}
+M=
+\begin{pmatrix}
+
+a & b \\
+c & d
+\end{pmatrix}
+\end{equation}
+
+% Afficher proprement les parenthèses
+$$
+a=
+\left(
+\dfrac{\alpha + \dfrac{beta}{\kappa}}{5+upsilon}
+\right)
+$$
+
+% afficher des systèmes - avec la fonction split
+$$
+f(X)=
+\left\lbrace
+\begin{split}
+5, \forall x \in \mathbb R^*\\
+12, \forall x \in \lbrace 0 \rbrace
+\end{split}
+\right. % le point dit que il n'y a rien comme délimiteur à droite
+$$
+
+\begin{eqnarray}
+a & =    & b + c\\
+  & \neq & d + z
+  % les caractère & permettent l'alignement ligne à ligne
+\end{eqnarray}
+%another test
+
+
+
+\end{itemize}
+
+% ON peut aussi donner des noms aux équations 
+
+
+
+\section{commandes}
+\newcommand{\myvec}[1]{\vec #1} % permet de créer ses propres fonctions pour mieux chosir comment écrire
+par exemple on veut afficher des vecteurs comme $\myvec V$
+
+
+\section{figures et graphiques}
+
+\includegraphics[scale=0.5]{figures/hello.jpg}
+
+On peut inclure des images même au sein d'un texte \includegraphics[scale=0.1]{figures/hello.jpg}, ou d'un tableau  comme ici
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\columnwidth]{figures/hello.jpg}
+\caption{HELLOW} % Titre de la figure
+\end{center}
+\end{figure}
+On peut chercher à faire correspondre la taille de l'image à la page
+
+% Pour mettre la figure au milieu de la page quand il y a deux colonnes
+\begin{figure*}
+\begin{center}
+\includegraphics[width=.4\textwidth]{figures/hello.jpg}
+\end{center}
+\end{figure*}
+
+\blindtext[10]
+
+
+\end{multicols}
+\newpage
+
+\section{Tables}
+\subsection{Objet tabulaire non flottant}
+\begin{table}
+\begin{tabular}{|c|c|c|}
+\hline
+truc& machin & ceci\\
+\hline
+\includegraphics[width=0.3\columnwidth]{figures/hello.jpg} & 0.1 & 0.2 \\
+\hline
+\end{tabular}
+\caption{table non flottante}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Bibliographie}
+je cite cette citation \cite{PMID12643357} % cite 
+test \citep{PMID12643357} % Cite entre parenthese
+second test  \citet{PMID12643357}
+\bibliographystyle{apalike}
+
+\bibliography{sources}
+
+
+
+
+\end{document}
